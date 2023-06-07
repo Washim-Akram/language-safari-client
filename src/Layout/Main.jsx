@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Footer from "../pages/Shared/Footer/Footer";
 import NavBar from "../pages/Shared/NavBar/NavBar";
 
 const Main = () => {
@@ -9,7 +10,7 @@ const Main = () => {
         <Outlet></Outlet>
       </div>
       <div className="mt-auto">
-        <h2>Footer</h2>
+        <Footer></Footer>
       </div>
     </div>
   );
