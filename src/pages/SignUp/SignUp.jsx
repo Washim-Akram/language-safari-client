@@ -1,15 +1,72 @@
 import { Player } from "@lottiefiles/react-lottie-player";
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
+  const { createUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
+    watch,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    const { name, email, password, photoURL } = data;
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(name, photoURL).then(() => {
+          Swal.fire({
+            title: "Congratulations!",
+            text: "User Created Successfully.",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          reset();
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          title: "Error!",
+          text: `${errorMessage}`,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        Swal.fire({
+          title: "Error!",
+          text: `${errorMessage}`,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+  };
 
   return (
     <div className="my-24">
@@ -92,13 +149,17 @@ const SignUp = () => {
                   </label>
                   <input
                     type="password"
-                    {...register("confirmPassword", { required: true })}
+                    {...register("confirmPassword", {
+                      required: "Confirm Password is required",
+                      validate: (value) =>
+                        value === watch("password") || "Passwords do not match",
+                    })}
                     placeholder="Confirm Password"
                     className="input input-bordered"
                   />
-                  {errors.confirmPassword?.type === "required" && (
+                  {errors.confirmPassword && (
                     <p className="text-red-600">
-                      Confirm Password field is required.
+                      {errors.confirmPassword.message}
                     </p>
                   )}
                 </div>
@@ -125,7 +186,7 @@ const SignUp = () => {
 
               <div className="divider">OR</div>
 
-              <button>
+              <button onClick={handleGoogleSignIn}>
                 <img
                   src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button.png"
                   alt="Sign in with Google"
