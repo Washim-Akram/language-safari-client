@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
@@ -30,6 +31,11 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -51,6 +57,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     updateUserProfile,
+    signIn,
     signInWithGoogle,
   };
 
