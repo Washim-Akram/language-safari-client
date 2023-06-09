@@ -84,7 +84,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-neutral text-neutral-content md:py-6 md:px-16">
+    <div className="navbar bg-neutral text-neutral-content md:py-6 md:px-16 fixed top-0 w-full z-10 bg-opacity-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -105,7 +105,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral text-neutral-content rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral text-neutral-content bg-opacity-75 rounded-box w-52"
           >
             {navItems}
           </ul>

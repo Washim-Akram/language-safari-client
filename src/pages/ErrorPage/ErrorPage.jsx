@@ -13,7 +13,7 @@ const ErrorPage = () => {
       ></Player>
 
       <p className="font-medium my-4 text-red-600 md:text-[18px]">
-        {error.message}
+        {error?.message}
       </p>
 
       <Link to="/">
