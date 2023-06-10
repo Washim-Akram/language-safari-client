@@ -141,7 +141,7 @@ const NavBar = () => {
         ) : (
           <div className="tooltip" data-tip="Login">
             <Link to="/login">
-              <button className="btn btn-sm">LOGIN</button>
+              <button className="btn btn-neutral">LOGIN</button>
             </Link>
           </div>
         )}

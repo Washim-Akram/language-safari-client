@@ -11,10 +11,10 @@ const Instructors = () => {
         </h2>
         <p className="md:text-[17px] text-gray-500 text-center mb-12">
           Discover the dedicated and experienced instructors at our prestigious
-          foreign language learning school. Our team of highly qualified
-          language experts is committed to guiding you on your journey to
-          linguistic fluency. Each instructor brings a unique teaching style and
-          deep cultural knowledge to the classroom, ensuring an immersive and
+          Language Safari learning school. Our team of highly qualified language
+          experts is committed to guiding you on your journey to linguistic
+          fluency. Each instructor brings a unique teaching style and deep
+          cultural knowledge to the classroom, ensuring an immersive and
           engaging learning experience. Whether you are a beginner or an
           advanced learner, our instructors will inspire and motivate you to
           reach your language goals. Get to know our exceptional instructors who
