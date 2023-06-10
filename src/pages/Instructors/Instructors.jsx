@@ -33,6 +33,8 @@ const Instructors = () => {
               <div className="card-body">
                 <h2 className="card-title">{instructor?.name}</h2>
                 <p>{instructor?.email}</p>
+                <p>Language : {instructor?.language}</p>
+                <p>Experience(Years) : {instructor?.experience}</p>
                 <p>Number of Classes : {instructor?.numberOfClasses}</p>
                 <div className="card-actions justify-end">
                   <button className="btn btn-neutral">See Classes</button>
