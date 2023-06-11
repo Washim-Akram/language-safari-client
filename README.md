@@ -2,7 +2,7 @@
 
 ## Live Link
 
-Hosted in Firebase -> https://example-url.web.app
+Hosted in Firebase -> https://language-safari-1d514.web.app
 
 ### Best features of our website.
 
