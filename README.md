@@ -14,7 +14,9 @@ Hosted in Firebase -> https://language-safari-1d514.web.app
 
 4. An easy-to-use online registration system.
 
-5. Additional learning materials and contact information for support staff or FAQs.
+5. Dashboard for Students and Instructors.
+
+6. Additional learning materials and contact information for support staff or FAQs.
 
 ## Used Packages & Technologies
 
