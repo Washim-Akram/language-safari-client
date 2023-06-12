@@ -24,30 +24,44 @@ const SignUp = () => {
     console.log(data);
     const { name, email, password, photoURL } = data;
 
-    createUser(email, password)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        updateUserProfile(name, photoURL).then(() => {
+    createUser(email, password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      updateUserProfile(name, photoURL)
+        .then(() => {
+          const saveUser = { name: name, email: email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  title: "Congratulations!",
+                  text: "User Created Successfully.",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
+                reset();
+                navigate("/");
+              }
+            });
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
           Swal.fire({
-            title: "Congratulations!",
-            text: "User Created Successfully.",
-            icon: "success",
-            confirmButtonText: "Cool",
+            title: "Error!",
+            text: `${errorMessage}`,
+            icon: "error",
+            confirmButtonText: "OK",
           });
-          reset();
-          navigate("/");
         });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        Swal.fire({
-          title: "Error!",
-          text: `${errorMessage}`,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-      });
+    });
   };
 
   const handleGoogleSignIn = () => {
