@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -28,6 +29,9 @@ const Classes = () => {
 
   return (
     <div className="bg-slate-100 py-10">
+      <Helmet>
+        <title>Language Safari | Classes</title>
+      </Helmet>
       <div className="container mx-auto mt-24 mb-24 md:mt-36 p-5">
         <h2 className="text-center text-3xl font-bold mb-2">
           &quot;Explore the World Through Language Learning&quot;
