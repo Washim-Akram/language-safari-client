@@ -15,7 +15,7 @@ const PopularInstructors = () => {
       <div className="container mx-auto mt-24 mb-24 md:mt-36 p-5">
         <Slide>
           <h2 className="text-center text-3xl font-bold mb-2">
-            Meet Our Popular Language Instructors
+            Meet Our Popular Instructors
           </h2>
         </Slide>
         <Rotate>
