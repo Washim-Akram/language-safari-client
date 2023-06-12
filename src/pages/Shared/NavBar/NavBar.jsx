@@ -88,16 +88,18 @@ const NavBar = () => {
         </NavLink>
       </li>
 
-      <li className="tooltip" data-tip="Dashboard">
-        <NavLink
-          to="/dashboard"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-          }
-        >
-          DASHBOARD
-        </NavLink>
-      </li>
+      {user?.email && (
+        <li className="tooltip" data-tip="Dashboard">
+          <NavLink
+            to="/dashboard"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            DASHBOARD
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
