@@ -31,12 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
-        loader: () => fetch("http://localhost:5000/instructors"),
+        loader: () =>
+          fetch("https://language-safari-server.vercel.app/instructors"),
       },
       {
         path: "/classes",
         element: <Classes></Classes>,
-        loader: () => fetch("http://localhost:5000/classes"),
+        loader: () =>
+          fetch("https://language-safari-server.vercel.app/classes"),
       },
     ],
   },
