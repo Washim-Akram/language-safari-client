@@ -46,7 +46,7 @@ const PopularInstructors = () => {
                 <p>Experience(Years) : {instructor?.experience}</p>
                 <p>Number of Classes : {instructor?.numberOfClasses}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-neutral">See Classes</button>
+                  <button className="btn btn-neutral">See Details</button>
                 </div>
               </div>
             </div>
